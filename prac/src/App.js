@@ -17,30 +17,28 @@ function App() {
                           flex justify-between items-center
                           p-5 text-gray-700'>
           <h1 className='font-bold'>React Practice</h1>
-          </header>
-            <div className="w-full grow overflow-y-auto
-                    flex flex-col justify-center items-center">
-              <CardMain />
-            </div>
-
           {/* 상단바 선택란 */}
-          {/* <ul className='text-lg font-bold flex justify-center items-center'>
+          <ul className='text-lg font-bold flex justify-center items-center'>
             <li className='px-5 hover:text-amber-400 rounded-sm'>
               <Link to='/'>Hello</Link>
             </li>
             <li className='px-5 hover:text-amber-400 rounded-sm'>
               <Link to='/Prac1'>Photo</Link>
             </li>
-          </ul> */}
-        
+          </ul>
+          </header>
+            {/* <div className="w-full grow overflow-y-auto
+                    flex flex-col justify-center items-center">
+              <CardMain />
+            </div> */}
 
-        {/* <div className="w-full grow overflow-y-auto
+        <div className="w-full grow overflow-y-auto
                     flex flex-col justify-center items-center">
           <Routes>
             <Route path='/' element={<Hello />} />
             <Route path='/Prac1' element={<Prac1 />} />
           </Routes> 
-        </div> */}
+        </div>
       </main>
       </div>
     </BrowserRouter>
