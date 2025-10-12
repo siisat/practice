@@ -12,8 +12,6 @@ naver = naver[naver.주문상태 == '결제완료']
 naver = naver[naver.상품번호 != 6804137224]
 naver = naver[naver.상품번호 != 6804109317]
 
-print(naver)
-
 # 주문번호별로 묶기
 gr_naver = naver.groupby('주문번호').agg({
     '구매자명' : list,
@@ -78,5 +76,4 @@ gr_naver['배송희망일자_현관비번'] = dateNpw_final
 
 
 # 파일 추출
-print(gr_naver)
 gr_naver.to_csv('output.csv', index=False, encoding='utf-8-sig')
