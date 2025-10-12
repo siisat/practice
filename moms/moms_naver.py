@@ -1,5 +1,4 @@
 import pandas as pd
-import re
 
 naver_1 = pd.read_csv('스마트스토어.csv')
 # print(naver_1.head())
@@ -9,9 +8,9 @@ naver = naver_1.drop(['상품주문번호', '배송속성', '풀필먼트사(주
 
 # 결제완료 상태만 추출
 naver = naver[naver.주문상태 == '결제완료']
-# 정기배송 제외 : 명절 주문만 남기기
-naver = naver[naver.상품번호 != '6804137224']
-naver = naver[naver.상품번호 != '6804109317']
+# # 정기배송 제외 : 명절 주문만 남기기
+naver = naver[naver.상품번호 != 6804137224]
+naver = naver[naver.상품번호 != 6804109317]
 
 print(naver)
 
@@ -72,6 +71,10 @@ gr_naver['배송희망일자_현관비번'] = dateNpw_final
 # 옵션+수량 정리
 
 
+# 주소, 전화번호
+
+
+# 판매처 기입
 
 
 # 파일 추출
