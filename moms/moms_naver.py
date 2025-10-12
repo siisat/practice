@@ -66,14 +66,39 @@ gr_naver['옵션정리버전'] = order_final
 gr_naver['배송희망일자_현관비번'] = dateNpw_final
 
 
+# 배송희망일자, 공동현관비번 분리
+date_list = []
+pw_list = []
+
+for memo in gr_naver['배송희망일자_현관비번'] :
+    cut_idx = memo.rfind('/')
+    # 배송희망일자
+    date_final = memo[:cut_idx].strip()
+    cut_idx = date_final.find(':')
+    date_final = date_final[cut_idx+1:].strip()
+    date_list.append(date_final)
+
+    # 공동현관비번
+    pw_final = memo[cut_idx+1:].strip()
+    cut_idx = pw_final.find(':')
+    pw_final = pw_final[cut_idx+1:].strip()
+    pw_list.append(pw_final)
+
+gr_naver['배송일'] = date_list
+gr_naver['공동현관비번'] = pw_list
+
+
 # 옵션+수량 정리
+    # 알뜰/정성/...상 기본 구성품도 카운트+1
 
 
 # 주소, 전화번호
 
 
 # 판매처 기입
+gr_naver['판매처'] = '스마트스토어'
 
 
 # 파일 추출
+gr_naver = gr_naver.drop(['옵션정보', '배송희망일자_현관비번'], axis=1)
 gr_naver.to_csv('output.csv', index=False, encoding='utf-8-sig')
