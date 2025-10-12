@@ -8,7 +8,7 @@ naver = naver_1.drop(['상품주문번호', '배송속성', '풀필먼트사(주
 
 # 결제완료 상태만 추출
 naver = naver[naver.주문상태 == '결제완료']
-# # 정기배송 제외 : 명절 주문만 남기기
+# 정기배송 제외 : 명절 주문만 남기기
 naver = naver[naver.상품번호 != 6804137224]
 naver = naver[naver.상품번호 != 6804109317]
 
@@ -67,6 +67,8 @@ gr_naver['배송희망일자_현관비번'] = dateNpw_final
 
 
 # 배송희망일자, 공동현관비번 분리
+    # 숫자만 남긴 채로 엑셀로 변환하면 숫자형 표시가 들쑥날쑥함 : 10.4 ->> 45738 이런 식
+    # 그냥 텍스트 그대로 안 자르고 가는 게 나을지도
 date_list = []
 pw_list = []
 
@@ -100,5 +102,5 @@ gr_naver['판매처'] = '스마트스토어'
 
 
 # 파일 추출
-gr_naver = gr_naver.drop(['옵션정보', '배송희망일자_현관비번'], axis=1)
+gr_naver = gr_naver.drop('옵션정보', axis=1)
 gr_naver.to_csv('output.csv', index=False, encoding='utf-8-sig')
