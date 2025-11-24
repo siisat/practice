@@ -127,6 +127,10 @@ def expand_items_quantities(row):
 
 #2
 # 상품 리스트가 존재할 때, 리스트와 비교해서 수량 체크만
+
+#### 알뜰상, 정성상, 고급상 -> 전처리 과정에서 수량 추가 필요함
+# 상이 있으면 {항목 : 수량} 딕셔너리 하나 더 추가해서 기존 옵션 수량에 + 해주기
+
 def count_items(df, item_list):
     buyers = df['주문번호'].tolist()
     counts = []
@@ -138,8 +142,8 @@ def count_items(df, item_list):
     result.index.name = '주문번호'
     return result
 
-result_hop2 = count_items(hop, item_list)
-result_hop2.to_csv('hada_fin.csv', encoding='utf-8-sig')
+counted_hada = count_items(hop, item_list)
+counted_hada.to_csv('hada_counted.csv', encoding='utf-8-sig')
 
 
 
