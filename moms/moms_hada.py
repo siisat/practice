@@ -3,6 +3,8 @@ import pandas as pd
 ############
 # 정기배송, 생일상 등 특이한 주문 상품번호 필요함-필터링용
 
+
+
 # 원본 : hada_1
 hada_1 = pd.read_csv('hada.csv')
 
@@ -70,14 +72,26 @@ for order_list in gr_hada['주문상품명(옵션포함)'] :
 
 gr_hada['옵션정리버전'] = order_final
 
-# # 옵션+수량 정리
-#     # 알뜰/정성/...상 기본 구성품도 카운트+1
 
 
 # 판매처 기입
 gr_hada['판매처'] = '자사몰'
 
-
 # # 파일 추출
 gr_hada = gr_hada.drop('주문상품명(옵션포함)', axis=1)
 gr_hada.to_csv('hada_output.csv', index=False, encoding='utf-8-sig')
+
+
+
+# 옵션+수량 정리
+    # 기존 리스트부터 카운트
+    # 알뜰/... 상 키값도 따로 : 알뜰상(상 이름 + 생선종류) 분리 필요
+    # 알뜰/정성/...상 기본 구성품을 기존 리스트에서 검색, 중복되는 항목은 카운트+1
+    # 알뜰/... 상 이름은 리스트에서 제거 --> 최종 품목+수량 리스트와 최초 주문 리스트 같이 준비해야 안 헷갈릴 듯
+
+product_list = ['사과', '배', '포도']
+quantity_list = [5, 2, 7]
+
+result = dict(zip(product_list, quantity_list))
+print(result)
+
