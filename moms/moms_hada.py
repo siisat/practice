@@ -186,7 +186,18 @@ counted_hada.to_csv('hada_counted.csv', encoding='utf-8-sig')
 
 
 # 수량 체크한 버전에 배송 정보 포함한 최종본 엑셀 생성
-# gr_hada + counted_hada 데이터프레임 병합
+# gr_hada + counted_hada 데이터프레임 병합 = fin_hada
 fin_hada = pd.merge(gr_hada, counted_hada, on='주문번호', how='outer')
 fin_hada2 = fin_hada.drop(['주문번호', '상품번호', '수량', '옵션정리버전'], axis=1)
+fin_hada2['주문자'] = fin_hada2['수령인'] # 자사몰은 주문자=수령인
+
+all_columns = fin_hada2.columns.tolist()
+all_columns.remove('주문자')
+move_cols = ['수령인 우편번호', '수령인 주소', '수령인 상세 주소', '배송메시지', '수령인 휴대전화', '판매처']
+for col in move_cols:
+    all_columns.remove(col)
+new_order = ['주문자'] + all_columns + move_cols
+fin_hada2 = fin_hada2[new_order]
+
 fin_hada2.to_csv('hada_final.csv', encoding='utf-8-sig')
+
