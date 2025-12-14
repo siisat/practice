@@ -8,10 +8,10 @@
 
 [자사몰 기존 csv 파일](https://github.com/siisat/practice/blob/main/hada.csv)
 
-[자사몰 주문서 수정본](https://github.com/siisat/practice/blob/main/hada.csv)
+[자사몰 주문서 수정본](https://github.com/siisat/practice/blob/main/hada_final.csv)
 
+***
 
 [자사몰 전용 주문서 정리 프로그램](https://github.com/siisat/practice/blob/main/moms/moms_hada.py)
 
-[네이버 스마트스토어 전용 주문서 정리 프로그램](https://github.com/siisat/practice/blob/main/moms/moms_naver.py)
-
+[주문상품명 전처리, 상품명-수량 딕셔너리화](https://github.com/siisat/practice/blob/main/moms/moms_fuc.py)
